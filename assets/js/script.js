@@ -61,3 +61,55 @@ function timer() {
     }, 1000);
     questions();
 }
+// Create question groups
+var questions = function () {
+    quizEl.textContent = "";
+    for (let i = 0; i < questionObj.length; i++) {
+        var panelEl = document.createElement("section");
+        panelEl.className = "question-panel";
+        panelEl.setAttribute("id", "panel" + [i + 1]);
+        quizEl.appendChild(panelEl);
+
+        var questionEl = document.createElement("h3");
+        questionEl.className = "quiz-question";
+        questionEl.textContent = questionObj[i].question;
+        panelEl.appendChild(questionEl);
+
+        var answerEl = document.createElement("div");
+        answerEl.setAttribute("data-question-id", "1"); // Set question option id
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.className = "answer-choice";
+        answerEl.textContent = "1. " + questionObj[i].options[0];
+        panelEl.appendChild(answerEl);
+
+        var answerEl = document.createElement("div");
+        answerEl.setAttribute("data-question-id", "2"); // Set question option id
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.className = "answer-choice";
+        answerEl.textContent = "2. " + questionObj[i].options[1];
+        panelEl.appendChild(answerEl);
+
+        var answerEl = document.createElement("div");
+        answerEl.setAttribute("data-question-id", "3"); // Set question option id
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.className = "answer-choice";
+        answerEl.textContent = "3. " + questionObj[i].options[2];
+        panelEl.appendChild(answerEl);
+
+        var answerEl = document.createElement("div");
+        answerEl.setAttribute("data-question-id", "4"); // Set question option id
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.className = "answer-choice";
+        answerEl.textContent = "4. " + questionObj[i].options[3];
+        panelEl.appendChild(answerEl);
+
+        var statusEl = document.createElement("div");
+        statusEl.setAttribute("id", "answer-status");
+        statusEl.className = "status";
+        panelEl.appendChild(statusEl);
+    }
+}
