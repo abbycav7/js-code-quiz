@@ -113,3 +113,85 @@ var questions = function () {
         panelEl.appendChild(statusEl);
     }
 }
+// Check selected answer and give results
+var checkAnswer = function (questionId, answerId, panelId) {
+
+    var panel1El = document.querySelector('#panel1');
+    var panel2El = document.querySelector('#panel2');
+    var panel3El = document.querySelector('#panel3');
+    var panel4El = document.querySelector('#panel4');
+    var statusEl = document.querySelector("#status");
+
+    switch (panelId) {
+        case 'panel1':
+            console.log("Panel 1");
+            if (questionId === answerId) {
+                statusEl.textContent = "Correct!"
+                statusEl.className = "status-correct"
+                panel1El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            }
+            else {
+                timeLeft = timeLeft - 10;
+                statusEl.textContent = "Wrong!"
+                statusEl.className = "status-wrong"
+                panel1El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            };
+            break;
+        case 'panel2':
+            console.log("Panel 2");
+            if (questionId === answerId) {
+                statusEl.textContent = "Excellent!"
+                statusEl.className = "status-correct"
+                panel2El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            }
+            else {
+                timeLeft = timeLeft - 10;
+                statusEl.textContent = "Wrong Again!"
+                statusEl.className = "status-wrong"
+                panel2El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            };
+            break;
+        case 'panel3':
+            console.log("Panel 3");
+            if (questionId === answerId) {
+                statusEl.textContent = "You Got It!"
+                statusEl.className = "status-correct"
+                panel3El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            }
+            else {
+                timeLeft = timeLeft - 10;
+                statusEl.textContent = "Ouch!"
+                statusEl.className = "status-wrong"
+                panel3El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            };
+            break;
+        case 'panel4':
+            console.log("Panel 4");
+            if (questionId === answerId) {
+                statusEl.textContent = "Well Done!"
+                statusEl.className = "status-correct"
+                panel4El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            }
+            else {
+                timeLeft = timeLeft - 10;
+                statusEl.textContent = "Totally Wrong."
+                statusEl.className = "status-wrong"
+                panel4El.setAttribute("style", "display: none"); // Hide question group after answer selected
+            };
+            break;
+        case 'panel5':
+            console.log("Panel 5");
+            if (questionId === answerId) {
+                statusEl.textContent = "Awesome!"
+                statusEl.className = "status-correct"
+                endGame(timeLeft); // Game is finished go to endGame()
+            }
+            else {
+                timeLeft = timeLeft - 10;
+                statusEl.textContent = "Not Correct."
+                statusEl.className = "status-wrong"
+                endGame(timeLeft); // Game is finished go to endGame()
+            };
+            break;
+    }
+}
