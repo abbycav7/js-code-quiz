@@ -27,14 +27,37 @@ var questionObj = [
         answer: "3",
     },
     {
-        question: "",
-        options: [""],
+        question: "How to write an IF statement in JavaScript?",
+        options: ["if (i==5)", "if i=5", "if i=5 then", "if i==5 then"],
         answer: "1"
     },
     {
-        question: "",
-        options: [""],
+        question: "How to write an IF statement for executing some code if "i" is NOT equal to 5?",
+        options: ["if i <> 5", "if i=!5 then", "if (i<>5)", "if (i !=5)"],
         answer: "4"
     },
 ]
 
+// Display opening instructions
+quizEl.textContent = "Answer the following questions within the given time limit. Keep in mind that incorrect answers will penalize both your score & your time by ten seconds! Good luck!";
+
+// Timer function set at 60 seconds
+function timer() {
+    timeLeft = 60;
+    startBtn.setAttribute("style", "display: none"); // Hide start button on start
+
+    timeInterval = setInterval(function () {
+        // While timer is running
+        if (timeLeft > -1) {
+            timerEl.textContent = 'Time: ' + timeLeft; // Display timer on page
+            timeLeft--;
+        }
+        // After timer hits zero
+        else {
+            timerEl.textContent = 'Times Up!'; // Display times up message
+            clearInterval(timeInterval); // Reset Timer
+            endGame(timeLeft);
+        }
+    }, 1000);
+    questions();
+}
