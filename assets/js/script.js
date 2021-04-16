@@ -195,3 +195,66 @@ var checkAnswer = function (questionId, answerId, panelId) {
             break;
     }
 }
+// End game function
+var endGame = function (timeLeft) {
+    clearInterval(timeInterval); // Stop Timer
+    quizEl.innerHTML = "<h2>All Done!</h2><h3>Your final score is " + (timeLeft) + "</h3>";
+    var highscoreEl = document.querySelector('#highscore-panel');
+    highscoreEl.setAttribute("style", "display: block; margin-top: -250px");
+}
+
+// Game over record high score
+var recordHighScores = function () {
+    event.preventDefault();
+    var playerInput = document.querySelector("input[name='player-initials']").value;
+    // Check if input values are empty strings
+    if (!playerInput) {
+        alert("Please enter your name or initals!");
+        return false;
+    }
+    // clear the screen
+    highscoreEl.textContent = "";
+    quizEl.textContent = "";
+    statusEl.textContent = "";
+
+    // Gather data for local storage
+    var highscore = {
+        name: playerInput,
+        score: timeLeft
+    }
+    localStorage.setItem('scores', JSON.stringify(highscore));
+
+    showHighScores();
+};
+
+// Build high score list
+var showHighScores = function () {
+    var savedScores = localStorage.getItem("scores")
+    if (!savedScores) {
+        alert("No High Scores Recorded!")
+        return false;
+    }
+    savedScores = JSON.parse(savedScores);
+    quizEl.innerHTML = "<h2 class='score-header'>High Scores!</h2>" +
+        "<div class='score-list'>1) " + savedScores.name + " &ndash; " + savedScores.score + "</div>" +
+        "<div class='score-buttons'>" +
+        "<button class='btn' onclick='location.reload()'>Go Back</button>" +
+        "<button class='btn' onclick='localStorage.clear()'>Clear High Scores</button>" +
+        "</div>";
+}
+
+// Gather question and answer id's for checkAnswer()
+var answerHandler = function (event) {
+    var targetEl = event.target;
+
+    if (targetEl.matches(".answer-choice")) {
+        var questionId = targetEl.getAttribute("data-question-id");
+        var answerId = targetEl.getAttribute("data-answer-id");
+        var panelId = targetEl.getAttribute("data-panel-id");
+        checkAnswer(questionId, answerId, panelId);
+    }
+}
+
+startBtn.onclick = timer;
+quizEl.addEventListener("click", answerHandler);
+formEl.addEventListener("submit", recordHighScores);
