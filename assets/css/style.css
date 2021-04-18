@@ -4,7 +4,7 @@
     --tertiary-color: pink;
   }
 
-/* Global Styles */
+/* global styles */
 * {
     margin: 0;
     padding: 0;
@@ -16,10 +16,10 @@ body{
 section {
     padding: 30px;
 }
-/* End Global styles */
+/* End  gs */
 
 
-/* Header Styles */
+/* header Styles */
 header{
     padding: 20px 35px;
     background-color: var(--tertiary-color);
@@ -60,10 +60,10 @@ header nav ul li a:hover {
     border-radius: 15px;
     text-shadow: none;
   }
-/* End Header Styles */
+/* End HS */
 
 
-/* Quiz Styles */
+/* quiz styles */
 .quiz-wrapper{
    text-align: center;
    margin: 0 auto;
@@ -93,10 +93,10 @@ header nav ul li a:hover {
    padding-top: 12px;
 }
 
-/* End Quiz Style */
+/* End QS */
 
 
-/* Answer Styles */
+/* answer styles */
 .answer-choice{
    padding: 10px;
    color: #ffffff;
@@ -125,29 +125,9 @@ header nav ul li a:hover {
    color: red;
    font-weight: bold;
 }
-/* End Answer Styles */
+/* End AS */
 
-
-/* Panel Styles */
-#panel1{
-   z-index: 50;
-}
-#panel2{
-   z-index: 40;
-}
-#panel3{
-   z-index: 30;
-}
-#panel4{
-   z-index: 20;
-}
-#panel5{
-   z-index: 10;
-}
-/* End Panel Styles */
-
-
-/* High Score Styles */
+/* high score styles */
 .highscore{
    display: none;
 }
@@ -194,4 +174,24 @@ form input {
     text-align: center;
     margin: 30px;
 }
-/* End High Score Styles */
+/* end high score */
+
+/* panel styles */
+#panel1{
+    z-index: 50;
+ }
+ #panel2{
+    z-index: 40;
+ }
+ #panel3{
+    z-index: 30;
+ }
+ #panel4{
+    z-index: 20;
+ }
+ #panel5{
+    z-index: 10;
+ }
+ /* End panel styles */
+
+/* end of css */

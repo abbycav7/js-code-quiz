@@ -12,34 +12,34 @@ var timeInterval;
 // Start Questions Array
 var questionObj = [
     {
-        question: "Inside which HTML element do we put the JavaScript?",
-        options: ["<scripting>", "<script>", "<js>", "<javascript>"],
-        answer: "2"
+        question: "Commonly used data types do NOT include:",
+        options: ["Strings", "Booleans", "Alerts", "Numbers"],
+        answer: "3"
     },
     {
-        question: "How do you write "Hello World" in an alert box?",
-        options: ["alert("Hello World");", "msgBox("Hello World");", "alertBox("Hello World");", "msg("Hello World");"],
+        question: "Arrays in JavaScript can be used to store ______",
+        options: ["Other Arrays", "Numbers and Strings", "Booleans", "All of the Above"],
+        answer: "4"
+    },
+    {
+        question: "The condition in an if/else statement is enclosed with _____",
+        options: ["Quotes", "Parenthesis", "Square Brackets", "Curly Brackets"],
+        answer: "2",
+    },
+    {
+        question: "String values must be enclosed within _____ when being assigned to variables.",
+        options: ["Quotes", "Curly Brackets", "Commas", "Parenthesis"],
         answer: "1"
     },
     {
-        question: "How do you create a function in JavaScript?",
-        options: ["function:myFunction()", "function = myFunction()","function myFunction()", "function+myFunction()"],
-        answer: "3",
-    },
-    {
-        question: "How to write an IF statement in JavaScript?",
-        options: ["if (i==5)", "if i=5", "if i=5 then", "if i==5 then"],
-        answer: "1"
-    },
-    {
-        question: "How to write an IF statement for executing some code if "i" is NOT equal to 5?",
-        options: ["if i <> 5", "if i=!5 then", "if (i<>5)", "if (i !=5)"],
+        question: "A useful tool used during development/debugging for printing content to the debugger is:",
+        options: ["JavaScript", "terminal/bash", "for loops", "console.log"],
         answer: "4"
     },
 ]
 
 // Display opening instructions
-quizEl.textContent = "Answer the following questions within the given time limit. Keep in mind that incorrect answers will penalize both your score & your time by ten seconds! Good luck!";
+quizEl.textContent = "Try to answer the following code-related questions withn the time limit. Keep in mind that incorrect answers will penalize your score / time by ten seconds!";
 
 // Timer function set at 60 seconds
 function timer() {
@@ -61,6 +61,7 @@ function timer() {
     }, 1000);
     questions();
 }
+
 // Create question groups
 var questions = function () {
     quizEl.textContent = "";
@@ -113,6 +114,7 @@ var questions = function () {
         panelEl.appendChild(statusEl);
     }
 }
+
 // Check selected answer and give results
 var checkAnswer = function (questionId, answerId, panelId) {
 
@@ -195,12 +197,25 @@ var checkAnswer = function (questionId, answerId, panelId) {
             break;
     }
 }
+
 // End game function
 var endGame = function (timeLeft) {
     clearInterval(timeInterval); // Stop Timer
     quizEl.innerHTML = "<h2>All Done!</h2><h3>Your final score is " + (timeLeft) + "</h3>";
     var highscoreEl = document.querySelector('#highscore-panel');
     highscoreEl.setAttribute("style", "display: block; margin-top: -250px");
+}
+
+// Gather question and answer id's for checkAnswer()
+var answerHandler = function (event) {
+    var targetEl = event.target;
+
+    if (targetEl.matches(".answer-choice")) {
+        var questionId = targetEl.getAttribute("data-question-id");
+        var answerId = targetEl.getAttribute("data-answer-id");
+        var panelId = targetEl.getAttribute("data-panel-id");
+        checkAnswer(questionId, answerId, panelId);
+    }
 }
 
 // Game over record high score
@@ -241,18 +256,6 @@ var showHighScores = function () {
         "<button class='btn' onclick='location.reload()'>Go Back</button>" +
         "<button class='btn' onclick='localStorage.clear()'>Clear High Scores</button>" +
         "</div>";
-}
-
-// Gather question and answer id's for checkAnswer()
-var answerHandler = function (event) {
-    var targetEl = event.target;
-
-    if (targetEl.matches(".answer-choice")) {
-        var questionId = targetEl.getAttribute("data-question-id");
-        var answerId = targetEl.getAttribute("data-answer-id");
-        var panelId = targetEl.getAttribute("data-panel-id");
-        checkAnswer(questionId, answerId, panelId);
-    }
 }
 
 startBtn.onclick = timer;
