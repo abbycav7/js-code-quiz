@@ -12,28 +12,28 @@ var timeInterval;
 // Start Questions Array
 var questionObj = [
     {
-        question: "Commonly used data types do NOT include:",
-        options: ["Strings", "Booleans", "Alerts", "Numbers"],
+        question: "Inside which HTML element do we put the JavaScript",
+        options: ["<javascript>", "<scripting>", "<script>", "<js>"],
         answer: "3"
     },
     {
-        question: "Arrays in JavaScript can be used to store ______",
-        options: ["Other Arrays", "Numbers and Strings", "Booleans", "All of the Above"],
+        question: "How do you write "Hello World" in an alert box",
+        options: ["alertBox("Hello World");", "msg("Hello World");", "msgBox("Hello World");", "alert("Hello World");"],
         answer: "4"
     },
     {
-        question: "The condition in an if/else statement is enclosed with _____",
-        options: ["Quotes", "Parenthesis", "Square Brackets", "Curly Brackets"],
+        question: "How to write an IF statement in JavaScript",
+        options: ["if i = 5", "if (i == 5)", "if i == 5 then", "if i = 5 then"],
         answer: "2",
     },
     {
-        question: "String values must be enclosed within _____ when being assigned to variables.",
-        options: ["Quotes", "Curly Brackets", "Commas", "Parenthesis"],
+        question: "How to write an IF statement for executing some code if "i" is NOT equal to 5?",
+        options: ["if (i != 5)", "if i <> 5", "if i =! 5 then", "if (i <> 5)"],
         answer: "1"
     },
     {
-        question: "A useful tool used during development/debugging for printing content to the debugger is:",
-        options: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        question: "How does a FOR loop start?",
+        options: ["for i = 1 to 5", "for (i <= 5; i++)", "for (i = 0; i <= 5)", "for (i = 0; i <= 5; i++)"],
         answer: "4"
     },
 ]
