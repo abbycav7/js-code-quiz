@@ -9,7 +9,7 @@ var startBtn = document.querySelector('#start');
 var timeLeft = 0;
 var timeInterval;
 
-// Start Questions Array
+/* Start Questions Array */
 var questionObj = [
     {
         question: "Commonly used data types do NOT include:",
@@ -33,35 +33,34 @@ var questionObj = [
     },
     {
         question: "A useful tool used during development/debugging for printing content to the debugger is:",
-        options: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        options: ["JavaScript", "Terminal", "for loops", "console.log"],
         answer: "4"
     },
 ]
-// Display opening instructions
-quizEl.textContent = "Good luck answering the following code-realted questions. You're a smarty pants, you got this!";
+/* Display opening instructions */
+quizEl.textContent = "Good luck answering the following code-related questions. You're a smarty pants, you got this!";
 
-// Timer function set at 60 seconds
+/* Timer function set at 60 seconds */
 function timer() {
     timeLeft = 60;
-    startBtn.setAttribute("style", "display: none"); // Hide start button on start
+    startBtn.setAttribute("style", "display: none"); 
 
     timeInterval = setInterval(function () {
-        // While timer is running
         if (timeLeft > -1) {
-            timerEl.textContent = 'Time: ' + timeLeft; // Display timer on page
+            timerEl.textContent = 'Time: ' + timeLeft; 
             timeLeft--;
         }
-        // After timer hits zero
+
         else {
-            timerEl.textContent = 'Times Up!'; // Display times up message
-            clearInterval(timeInterval); // Reset Timer
+            timerEl.textContent = 'Times Up!'; 
+            clearInterval(timeInterval); 
             endGame(timeLeft);
         }
     }, 1000);
     questions();
 }
 
-// Create question groups
+/* Create question groups */
 var questions = function () {
     quizEl.textContent = "";
     for (let i = 0; i < questionObj.length; i++) {
@@ -76,33 +75,33 @@ var questions = function () {
         panelEl.appendChild(questionEl);
 
         var answerEl = document.createElement("div");
-        answerEl.setAttribute("data-question-id", "1"); // Set question option id
-        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
-        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.setAttribute("data-question-id", "1"); 
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); 
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); 
         answerEl.className = "answer-choice";
         answerEl.textContent = "1. " + questionObj[i].options[0];
         panelEl.appendChild(answerEl);
 
         var answerEl = document.createElement("div");
-        answerEl.setAttribute("data-question-id", "2"); // Set question option id
-        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
-        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.setAttribute("data-question-id", "2"); 
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); 
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); 
         answerEl.className = "answer-choice";
         answerEl.textContent = "2. " + questionObj[i].options[1];
         panelEl.appendChild(answerEl);
 
         var answerEl = document.createElement("div");
-        answerEl.setAttribute("data-question-id", "3"); // Set question option id
-        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
-        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.setAttribute("data-question-id", "3"); 
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); 
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); 
         answerEl.className = "answer-choice";
         answerEl.textContent = "3. " + questionObj[i].options[2];
         panelEl.appendChild(answerEl);
 
         var answerEl = document.createElement("div");
-        answerEl.setAttribute("data-question-id", "4"); // Set question option id
-        answerEl.setAttribute("data-answer-id", questionObj[i].answer); // set correct answer id
-        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); // set question group id
+        answerEl.setAttribute("data-question-id", "4"); 
+        answerEl.setAttribute("data-answer-id", questionObj[i].answer); 
+        answerEl.setAttribute("data-panel-id", "panel" + [i + 1]); 
         answerEl.className = "answer-choice";
         answerEl.textContent = "4. " + questionObj[i].options[3];
         panelEl.appendChild(answerEl);
@@ -114,7 +113,7 @@ var questions = function () {
     }
 }
 
-// Check selected answer and give results
+/* Check selected answer and give results */
 var checkAnswer = function (questionId, answerId, panelId) {
 
     var panel1El = document.querySelector('#panel1');
@@ -129,13 +128,13 @@ var checkAnswer = function (questionId, answerId, panelId) {
             if (questionId === answerId) {
                 statusEl.textContent = "Correct!"
                 statusEl.className = "status-correct"
-                panel1El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel1El.setAttribute("style", "display: none"); 
             }
             else {
                 timeLeft = timeLeft - 10;
                 statusEl.textContent = "Wrong!"
                 statusEl.className = "status-wrong"
-                panel1El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel1El.setAttribute("style", "display: none"); 
             };
             break;
         case 'panel2':
@@ -143,13 +142,13 @@ var checkAnswer = function (questionId, answerId, panelId) {
             if (questionId === answerId) {
                 statusEl.textContent = "Excellent!"
                 statusEl.className = "status-correct"
-                panel2El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel2El.setAttribute("style", "display: none"); 
             }
             else {
                 timeLeft = timeLeft - 10;
-                statusEl.textContent = "Wrong Again!"
+                statusEl.textContent = "Oops!"
                 statusEl.className = "status-wrong"
-                panel2El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel2El.setAttribute("style", "display: none"); 
             };
             break;
         case 'panel3':
@@ -157,13 +156,13 @@ var checkAnswer = function (questionId, answerId, panelId) {
             if (questionId === answerId) {
                 statusEl.textContent = "You Got It!"
                 statusEl.className = "status-correct"
-                panel3El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel3El.setAttribute("style", "display: none"); 
             }
             else {
                 timeLeft = timeLeft - 10;
                 statusEl.textContent = "Ouch!"
                 statusEl.className = "status-wrong"
-                panel3El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel3El.setAttribute("style", "display: none"); 
             };
             break;
         case 'panel4':
@@ -171,13 +170,13 @@ var checkAnswer = function (questionId, answerId, panelId) {
             if (questionId === answerId) {
                 statusEl.textContent = "Well Done!"
                 statusEl.className = "status-correct"
-                panel4El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel4El.setAttribute("style", "display: none"); 
             }
             else {
                 timeLeft = timeLeft - 10;
-                statusEl.textContent = "Totally Wrong."
+                statusEl.textContent = "Yikes! No."
                 statusEl.className = "status-wrong"
-                panel4El.setAttribute("style", "display: none"); // Hide question group after answer selected
+                panel4El.setAttribute("style", "display: none"); 
             };
             break;
         case 'panel5':
@@ -185,41 +184,41 @@ var checkAnswer = function (questionId, answerId, panelId) {
             if (questionId === answerId) {
                 statusEl.textContent = "Awesome!"
                 statusEl.className = "status-correct"
-                endGame(timeLeft); // Game is finished go to endGame()
+                endGame(timeLeft); /* game is all done go to endGame() */
             }
             else {
                 timeLeft = timeLeft - 10;
                 statusEl.textContent = "Not Correct."
                 statusEl.className = "status-wrong"
-                endGame(timeLeft); // Game is finished go to endGame()
+                endGame(timeLeft); /* game is all done go to endGame() */
             };
             break;
     }
 }
 
-// End game function
+/* End game function */
 var endGame = function (timeLeft) {
-    clearInterval(timeInterval); // Stop Timer
+    clearInterval(timeInterval); /* StOP Timer */
     quizEl.innerHTML = "<h2>Boom! All Done!</h2><h3>Your final score is " + (timeLeft) + "</h3>";
     var highscoreEl = document.querySelector('#highscore-panel');
     highscoreEl.setAttribute("style", "display: block; margin-top: -250px");
 }
 
-// Game over record high score
+/* Game over record high score */
 var recordHighScores = function () {
     event.preventDefault();
     var playerInput = document.querySelector("input[name='player-initials']").value;
-    // Check if input values are empty strings
+    /* check on inpur values, make sure not empty strings */
     if (!playerInput) {
         alert("Please enter your name or initals!");
         return false;
     }
-    // clear the screen
+    /* clear screen bby */
     highscoreEl.textContent = "";
     quizEl.textContent = "";
     statusEl.textContent = "";
 
-    // Gather data for local storage
+    /* gather data for local storage */
     var highscore = {
         name: playerInput,
         score: timeLeft
@@ -229,7 +228,7 @@ var recordHighScores = function () {
     showHighScores();
 };
 
-// Build high score list
+/* high score list */
 var showHighScores = function () {
     var savedScores = localStorage.getItem("scores")
     if (!savedScores) {
@@ -245,7 +244,7 @@ var showHighScores = function () {
         "</div>";
 }
 
-// Gather question and answer id's for checkAnswer()
+/* pull question and answer id's for checkAnswer() */
 var answerHandler = function (event) {
     var targetEl = event.target;
 
